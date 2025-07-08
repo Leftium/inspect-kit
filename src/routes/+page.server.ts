@@ -35,6 +35,16 @@ async function serializeRequest(request: Request) {
 }
 
 export const load = async (loadEvent) => {
+    function serializePlatform(platform: typeof loadEvent.platform) {
+	if (!platform) {
+		return null;
+	}
+	const { cf } = platform;
+
+	return {
+		cf
+	};
+}
 	//console.log(loadEvent);
 
 	const { isDataRequest, isSubRequest, route, locals } = loadEvent;
@@ -45,7 +55,7 @@ export const load = async (loadEvent) => {
 		url:              loadEvent.url.href,
 		cookies:          loadEvent.cookies.getAll(),
 		getClientAddress: loadEvent.getClientAddress(),
-        platform:         loadEvent.platform || null,
+        platform:         serializePlatform(loadEvent.platform),
 
         params:           {...loadEvent.params},
 		route,
