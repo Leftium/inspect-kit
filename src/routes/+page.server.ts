@@ -102,8 +102,9 @@ export const load = async (loadEvent) => {
 			return aType > bType ? 1 : -1;
 		});
 
-	console.log(loadEvent);
-	console.log(loadEventSerialized);
+	///console.log(loadEvent);
+	///console.log(loadEventSerialized);
+	/*
 	console.log(
 		keys
 			.map(
@@ -112,6 +113,7 @@ export const load = async (loadEvent) => {
 			)
 			.join('\n')
 	);
+	*/
 
 	return { loadEventSerialized, keys };
 };
